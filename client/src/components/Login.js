@@ -11,7 +11,7 @@ class Login extends Component {
   }
 
   loginUser = (user_params) => {
-    ReceiptAPI.authenticateUser(user_params)
+    api.authenticateUser(user_params)
               .then(data => this.checkStatus(data))
   }
 
