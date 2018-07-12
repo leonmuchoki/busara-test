@@ -16,9 +16,9 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="signup-container">
+      <div className="container">
         <h3>Sign Up</h3>
-        <form className="sign-up-wrapper" onSubmit={this.handleSubmit}>
+        <form className="wrapper" onSubmit={this.handleSubmit}>
           <input className="sign-up-input" type="name" name="name" placeholder="add your name.." />
           <input className="sign-up-input" type="email" name="email" placeholder="add your email.." />
           <input className="sign-up-input" type="password" name="password" placeholder="add your password.." />
