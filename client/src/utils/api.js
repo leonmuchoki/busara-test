@@ -41,3 +41,14 @@ export const authenticateUser = (user_params) =>
     })
     .then(res => res.json())
     .then(data => (setToken(data)))
+
+// CREATE CONTACT /users/:user_id/contacts
+let user_id = localStorage.user_id
+export const createContact = (contact_params) => 
+  fetch(`${api}/users/${user_id}/contacts`, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(contact_params)
+    })
+    .then(res => res.json())
+    .then(data => (setToken(data)))
