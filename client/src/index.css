@@ -6,6 +6,7 @@ body {
 
 .container {
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -14,8 +15,47 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+}
+
+.nav-header {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc!important;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+  margin-bottom: 8px;
+}
+
+.nav-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-header-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-header-span {
+  padding: 10px;
+  margin-left: 10px;
+}
+
+a {
+  outline: none;
+  text-decoration-line: none;
+  color: #45a8ba;
+  line-height: 30px;
+  letter-spacing: 0px;
+  display: inline-block;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
 }
 
 

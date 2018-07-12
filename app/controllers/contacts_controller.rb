@@ -1,4 +1,4 @@
-class ContactController < ApplicationController
+class ContactsController < ApplicationController
 	before_action :set_business, only: [:show, :update, :destroy]
 	#skip_before_action :authorize_request, only: :create
 
@@ -17,3 +17,4 @@ class ContactController < ApplicationController
     def set_user
       @user = User.find(params[:user_id])
     end
+end

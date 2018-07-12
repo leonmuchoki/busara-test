@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import serializeForm from 'form-serialize';
+import { Container, Header, Input, Button } from 'semantic-ui-react'
 import * as api from '../utils/api'
 
 class Register extends Component {
@@ -16,16 +17,18 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h3>Sign Up</h3>
-        <form className="wrapper" onSubmit={this.handleSubmit}>
-          <input className="sign-up-input" type="name" name="name" placeholder="add your name.." />
-          <input className="sign-up-input" type="email" name="email" placeholder="add your email.." />
-          <input className="sign-up-input" type="password" name="password" placeholder="add your password.." />
-          <input className="sign-up-input" type="password" name="password_confirmation" placeholder="confirm your password.." />
-          <button className="sign-up-button">Create an account</button>
-        </form>
-      </div>
+      <Container>
+        <div className="container">
+          <Header as='h3'>Sign Up</Header>
+          <form className="wrapper" onSubmit={this.handleSubmit}>
+            <Input className="sign-up-input" type="name" name="name" placeholder="add your name.." />
+            <Input className="sign-up-input" type="email" name="email" placeholder="add your email.." />
+            <Input className="sign-up-input" type="password" name="password" placeholder="add your password.." />
+            <Input className="sign-up-input" type="password" name="password_confirmation" placeholder="confirm your password.." />
+            <Button className="sign-up-button" primary>Create an account</Button>
+          </form>
+        </div>
+      </Container>
     )
   }
 }
