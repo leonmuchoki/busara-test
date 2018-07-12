@@ -1,21 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An application should allow registration and login of users. After login, users see a list of contacts with
+the metadata: name , phone number (international format) and age.
 
-Things you may want to cover:
+Setups:
 
 * Ruby version
+ruby 2.4.4
+rails 5.2.0
 
 * System dependencies
 
 * Configuration
 
 * Database creation
+rails db:setup
+rails db:migrate
 
 * Database initialization
+rails db:reset
 
 * How to run the test suite
+rails generate rspec:install
 
 * Services (job queues, cache servers, search engines, etc.)
 
