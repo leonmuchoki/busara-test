@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import serializeForm from 'form-serialize';
-import { Container, Header, Input, Button, Popup, Modal, Icon } from 'semantic-ui-react'
+import { Container, Header, Input, Button, Popup, Modal, Icon, Loader } from 'semantic-ui-react'
 import * as api from '../utils/api'
 
 class Register extends Component {
   state = {
     modalOpen: false,
-    modalMessage: ''
+    modalMessage: '',
+    loading: false
   }
 
   handleSubmit = (e) => {
+    this.setState({loading: true})
     e.preventDefault()
     const values = serializeForm(e.target, { hash:true })
     this.createNewUser(values)
@@ -21,9 +23,14 @@ class Register extends Component {
   }
 
   onResponse = (data) => {
-    let rtn_status = data["status"]
+    console.log('onREsponse..===' + JSON.stringify(data))
+    this.setState({loading: false})
+    let rtn_status = ""
+    if (data !== undefined) {rtn_status = data["status"]} 
     if (rtn_status == "200") {
       // redirect to contacts
+      console.log('sattus=200')
+      this.props.history.push("/contacts");
     }
     else if (rtn_status == "400") {
       // show pop error
@@ -40,16 +47,22 @@ class Register extends Component {
           <Header as='h3'>Sign Up</Header>
           {this.state.modalOpen === false 
             ?
-            <form className="wrapper" onSubmit={this.handleSubmit}>
-              <Input icon="user" className="sign-up-input" type="name" name="name" placeholder="add your name.." />
-              <Input icon="envelope" className="sign-up-input" type="email" name="email" placeholder="add your email.." />
-              <Input icon="key" className="sign-up-input" type="password" name="password" placeholder="add your password.." />
-              <Input icon="key" className="sign-up-input" type="password" name="password_confirmation" placeholder="confirm your password.." />
-              <Button className="sign-up-button" primary>Create an account</Button>
-            </form>
+            <div>
+              {this.state.loading === true 
+              ? <Loader active  size="large">creating account...please wait</Loader>
+              :
+              <form className="wrapper" onSubmit={this.handleSubmit}>
+                <Input icon="user" className="sign-up-input" type="name" name="name" placeholder="add your name.." />
+                <Input icon="envelope" className="sign-up-input" type="email" name="email" placeholder="add your email.." />
+                <Input icon="key" className="sign-up-input" type="password" name="password" placeholder="add your password.." />
+                <Input icon="key" className="sign-up-input" type="password" name="password_confirmation" placeholder="confirm your password.." />
+                <Button className="sign-up-button" primary>Create an account</Button>
+              </form>
+              }
+            </div>
             :
             <Modal basic size='small' open={this.state.modalOpen}>
-              <Header icon='browser' content='Error' />
+              <Header icon='browser' content='Please try again' />
               <Modal.Content>
                 <h3>{this.state.modalMessage}</h3>
               </Modal.Content>

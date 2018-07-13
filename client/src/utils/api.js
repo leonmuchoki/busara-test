@@ -6,19 +6,18 @@ let token = localStorage.getItem('token')
 } */
 
 const processResponse = (data) => {
-  console.log('processResponse..' + JSON.stringify(data))
+  
   let rtn_status = data["status"]
-  if (rtn_status === "200") {
+   if (rtn_status === 200) {
     let rtn_msg = data["message"]
     
-    if (rtn_status === "Account created successfully") {
-      localStorage.setItem('token', data["auth_token"])
-      token = data["auth_token"]
-      
-    }
+    localStorage.setItem('token', data["auth_token"])
+    token = data["auth_token"]
+    console.log('processResponse..' + JSON.stringify(data))
     return data
   }
-  else if (rtn_status == "400") {
+  else if (rtn_status == 400) {
+    console.log('processResponse..' + JSON.stringify(data))
     let rtn_err = data["message"]
     return data
   }

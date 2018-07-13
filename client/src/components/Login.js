@@ -24,7 +24,7 @@ class Login extends Component {
       localStorage.setItem('user_id', user_data["id"])
       localStorage.setItem('user_email', user_data["email"])
       localStorage.setItem('token', data["auth_token"])
-      this.props.history.push("/");
+      this.props.history.push("/contacts");
     }
   }
 
