@@ -27,12 +27,11 @@ class Register extends Component {
     this.setState({loading: false})
     let rtn_status = ""
     if (data !== undefined) {rtn_status = data["status"]} 
-    if (rtn_status == "200") {
+    if (rtn_status === 200) {
       // redirect to contacts
-      console.log('sattus=200')
       this.props.history.push("/contacts");
     }
-    else if (rtn_status == "400") {
+    else if (rtn_status === 400) {
       // show pop error
       this.setState({ modalOpen: true, modalMessage: data["message"] })
     }
