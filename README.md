@@ -27,4 +27,6 @@ rails generate rspec:install
 
 * Deployment instructions
 
-* ...
+* References:
+jwt::https://www.codementor.io/omedale/simple-approach-to-rails-5-api-authentication-with-json-web-token-cpqbgrdo6
+credentials::https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2
