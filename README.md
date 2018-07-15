@@ -26,7 +26,18 @@ rails generate rspec:install
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+heroku apps:create
+heroku buildpacks:add heroku/nodejs --index 1
+heroku buildpacks:add heroku/ruby --index 2
+git add .
+git commit -vam "Initial commit"
+git push heroku master
+ - set heroku master key(as we are using rails 5.2):
+ heroku config:set RAILS_MASTER_KEY=<your-master-key-here>
 
 * References:
 jwt::https://www.codementor.io/omedale/simple-approach-to-rails-5-api-authentication-with-json-web-token-cpqbgrdo6
-credentials::https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2
+credentials::
+ -https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2
+ -https://medium.com/cedarcode/rails-5-2-credentials-9b3324851336
+             
