@@ -7,7 +7,8 @@ class AuthenticationController < ApplicationController
 		auth_token = AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
 		user = User.find_by(email: auth_params[:email])
 		#contacts = user.contacts
-		json_response(return_status: 'success',auth_token: auth_token, user: user)
+		response = { status: 200, message: Message.authenticate_success, auth_token: auth_token, user_id: user.id }
+		json_response(response)
 	end
 
 	private

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import serializeForm from 'form-serialize';
-import { Container, Header, Input, Button, Popup, Modal, Icon, Loader } from 'semantic-ui-react'
+import { Container, Header, Input, Button, Loader } from 'semantic-ui-react'
 import * as api from '../utils/api'
+import ShowModal from './ShowModal'
 
 class Register extends Component {
   state = {
@@ -23,7 +24,7 @@ class Register extends Component {
   }
 
   onResponse = (data) => {
-    console.log('onREsponse..===' + JSON.stringify(data))
+    //console.log('onREsponse..===' + JSON.stringify(data))
     this.setState({loading: false})
     let rtn_status = ""
     if (data !== undefined) {rtn_status = data["status"]} 
@@ -60,17 +61,7 @@ class Register extends Component {
               }
             </div>
             :
-            <Modal basic size='small' open={this.state.modalOpen}>
-              <Header icon='browser' content='Please try again' />
-              <Modal.Content>
-                <h3>{this.state.modalMessage}</h3>
-              </Modal.Content>
-              <Modal.Actions>
-                <Button color='red' onClick={this.handleClose}>
-                  Ok
-                </Button>
-              </Modal.Actions>
-            </Modal>
+              <ShowModal modalMessage={this.state.modalMessage} open={this.state.modalOpen} handleClose={this.handleClose} />
           }
         </div>
       </Container>

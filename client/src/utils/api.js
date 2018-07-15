@@ -6,11 +6,13 @@ let token = localStorage.getItem('token')
 } */
 
 const processResponse = (data) => {
-  
+  console.log('data returned..' + JSON.stringify(data))
   let rtn_status = data["status"]
    if (rtn_status === 200) {
     let rtn_msg = data["message"]
     
+    localStorage.setItem('user_id', data["id"])
+    //localStorage.setItem('user_email', user_data["email"])
     localStorage.setItem('token', data["auth_token"])
     token = data["auth_token"]
     console.log('processResponse..' + JSON.stringify(data))

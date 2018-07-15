@@ -7,6 +7,7 @@ class Nav extends Component {
 
   componentDidMount() {
     let token = localStorage.token
+    console.log('Nav..token..' + token)
     if (token) {
       this.setState({loggedIn: true})
     }

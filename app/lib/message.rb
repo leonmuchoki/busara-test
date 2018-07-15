@@ -34,4 +34,8 @@ class Message
 	def self.record_not_found
 		'Sorry, record not found'
 	end
+
+	def self.authenticate_success
+		'Login Successful'
+	end
 end
