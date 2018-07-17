@@ -36,11 +36,12 @@ class Contacts extends Component {
         <div className="container">
           <Header as='h2'>Your Contacts</Header>
           <List divided verticalAlign='middle'>
-            {contacts.length > 0 && 
+            {contacts !== undefined > 0 && 
               contacts.map((contact, index)=>(
                 <List.Item key={index}>
                   <List.Content>
-                    <List.Header as='a'>{contact.phone}</List.Header>
+                    <List.Header as='a'>{contact.name}</List.Header>
+                    {contact.phone}
                   </List.Content>
                 </List.Item>
               ))

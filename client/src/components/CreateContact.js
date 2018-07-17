@@ -44,14 +44,13 @@ class CreateContact extends Component {
         <Container text>
           <div className="container">
             <Header as='h3'>Create Contact</Header>
-            <form className="wrapper-contact" onSubmit={this.handleSubmit}>
-              
+            <form className="wrapper-create-contact" onSubmit={this.handleSubmit}>
+            <Input className="create-contact-input" type="text" name="name" placeholder="enter contact name" />
               <PhoneInput
                   placeholder="Enter phone number"
                   name="phone"
                   value={ this.state.phone }
                   onChange={ phone => this.setState({ phone }) }
-                  className="create-contact-input create-contact-input-phone"
                   />
               <Input className="create-contact-input" type="number" name="age" placeholder="enter your age.." />
               <Input className="create-contact-input" type="hidden" name="user_id" value={user_id} />

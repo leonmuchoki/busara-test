@@ -74,13 +74,15 @@ a {
   justify-content: space-between;
 }
 
-.wrapper-contact {
+.wrapper-create-contact {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
 .create-contact-input {
-  margin-left: 5px;
+  margin-bottom: 15px;
+  margin-top: 8px;
 }
 
 .create-contact-input-phone {
