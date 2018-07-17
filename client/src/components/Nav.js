@@ -7,7 +7,7 @@ class Nav extends Component {
 
   componentDidMount() {
     let token = localStorage.token
-    console.log('Nav..token..' + token)
+    //console.log('Nav..token..' + token)
     if (token) {
       this.setState({loggedIn: true})
     }
@@ -36,7 +36,7 @@ class Nav extends Component {
                   <Link to="/contacts/create">New Contact</Link>
                 </span>
                 <span className="nav-header-span">
-                  <Link to="" onClick={this.logOutUser}>Logout</Link> 
+                  <Link to="" onClick={()=>this.logOutUser()}>Logout</Link> 
                 </span>
               </div>
               :

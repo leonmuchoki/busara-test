@@ -10,6 +10,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #dddddd;
+  padding: 20px;
+  margin-top: 30px;
 }
 
 .wrapper {
@@ -64,6 +67,24 @@ a {
 
 .sign-in-input {
   margin-bottom: 5px;
+}
+
+.form-footer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper-contact {
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-contact-input {
+  margin-left: 5px;
+}
+
+.create-contact-input-phone {
+  padding: 20px;
 }
 
 

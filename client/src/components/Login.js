@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import serializeForm from 'form-serialize';
 import { Container, Header, Input, Button, Popup, Modal, Icon, Loader } from 'semantic-ui-react'
 import * as api from '../utils/api'
@@ -9,6 +10,14 @@ class Login extends Component {
     modalOpen: false,
     modalMessage: '',
     loading: false
+  }
+
+  componentDidMount(){
+    let token = localStorage.token
+    //console.log('Nav..token..' + token)
+    if (token) {
+      this.props.history.push("/contacts");
+    }
   }
 
   handleClose = () => this.setState({ modalOpen: false })
@@ -54,6 +63,10 @@ class Login extends Component {
                   <Input icon="envelope" className="sign-in-input" type="email" name="email" placeholder="add your email.." />
                   <Input icon="key" className="sign-in-input" type="password" name="password" placeholder="add your password.." />
                   <Button primary>Login</Button>
+                  <div className="form-footer">
+                    <span>Don't have an account? </span>
+                    <Link to="/register">Register</Link>
+                  </div>
                 </form>
               }
         </div>

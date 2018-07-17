@@ -5,20 +5,19 @@ import Login from './Login'
 import CreateContact from './CreateContact'
 import Nav from './Nav'
 import Contacts from './Contacts'
-import Home from './Home'
 
-class App extends Component {
+class Home extends Component {
   render() {
     return (
-      <div className="App">
-        <Route exact path="/" component={Login} />
+      <div className="Home">
+        <Nav />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/contacts" component={Contacts} />
-        <Route path="/contacts/create" component={CreateContact} />
+        <Route exact path="/contacts/create" component={CreateContact} />
       </div>
     );
   }
 }
 
-export default App;
+export default Home;

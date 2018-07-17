@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import serializeForm from 'form-serialize';
+import { Link } from 'react-router-dom'
 import { Container, Header, Input, Button, Loader } from 'semantic-ui-react'
 import * as api from '../utils/api'
 import ShowModal from './ShowModal'
@@ -57,6 +58,10 @@ class Register extends Component {
                 <Input icon="key" className="sign-up-input" type="password" name="password" placeholder="add your password.." />
                 <Input icon="key" className="sign-up-input" type="password" name="password_confirmation" placeholder="confirm your password.." />
                 <Button className="sign-up-button" primary>Create an account</Button>
+                <div className="form-footer">
+                  <span>Already have an account? </span>
+                  <Link to="/login">Login</Link>
+                </div>
               </form>
               }
             </div>
