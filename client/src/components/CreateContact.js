@@ -28,8 +28,10 @@ class CreateContact extends Component {
 
   processResponse = (data) => {
     if (data !== undefined) {
+      console.log('contact created..' + JSON.stringify(data))
       if (data["status"] === 200) {
         //contact created successfully
+        this.props.history.push("/contacts");
       }
     }
   }

@@ -67,3 +67,12 @@ export const createContact = (contact_params) =>
     })
     .then(res => res.json())
     .then(data => (data))
+
+// FETCH CONTACTS /users/:user_id/contacts
+export const fetchUserContacts = () => 
+  fetch(`${api}/users/${user_id}/contacts`, {
+    method: 'GET',
+    headers: headers
+    })
+    .then(res => res.json())
+    .then(data => (data))

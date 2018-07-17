@@ -1,10 +1,15 @@
 class ContactsController < ApplicationController
-	before_action :set_business, only: [:show, :update, :destroy]
-	#skip_before_action :authorize_request, only: :create
+	before_action :set_user
+
+	def index
+		@contacts = @user.contacts
+		response = { status: 200, contacts: @contacts }
+		json_response(response)
+	end
 
 	# POST /users/:user_id/contacts
 	def create
-		@contact = Contact.create!(contact_params)
+		@contact = @user.contacts.create!(contact_params)
 			
 		response = { status: 200, message: 'contact created' }
 		json_response(response, :created)

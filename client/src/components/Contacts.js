@@ -1,24 +1,51 @@
 import React, { Component } from 'react';
-import serializeForm from 'form-serialize';
-import { Container, Header, Input, Button } from 'semantic-ui-react'
+import { Container, Header, List } from 'semantic-ui-react'
 import * as api from '../utils/api'
 import Nav from './Nav'
 
 class Contacts extends Component {
 
+  state = {
+    contacts: []
+  }
+
   componentDidMount(){
     this.fetchContacts()
   }
 
-  fetchContacts = () => {}
+  fetchContacts = () => {
+    api.fetchUserContacts()
+      .then(data => (this.processResponse(data)))
+  }
+
+  processResponse = (data) => {
+    if (data !== undefined) {
+      //console.log(JSON.stringify(data))
+      let contactData = data["contacts"]
+      this.setState({contacts: contactData})
+    }
+  }
 
   render() {
+    const contacts = this.state.contacts
+    console.log(JSON.stringify('in render..' + JSON.stringify(contacts)))
     return (
       <div>
         <Nav />
         <Container text>
         <div className="container">
-          <Header as='h2'>contacts</Header>
+          <Header as='h2'>Your Contacts</Header>
+          <List divided verticalAlign='middle'>
+            {contacts.length > 0 && 
+              contacts.map((contact, index)=>(
+                <List.Item key={index}>
+                  <List.Content>
+                    <List.Header as='a'>{contact.phone}</List.Header>
+                  </List.Content>
+                </List.Item>
+              ))
+            }
+          </List>
         </div>
         </Container>
       </div>
