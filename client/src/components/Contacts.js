@@ -36,7 +36,7 @@ class Contacts extends Component {
         <div className="container">
           <Header as='h2'>Your Contacts</Header>
           <List divided verticalAlign='middle'>
-            {contacts !== undefined > 0 && 
+            {contacts !== undefined && 
               contacts.map((contact, index)=>(
                 <List.Item key={index}>
                   <List.Content>
