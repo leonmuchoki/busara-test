@@ -11,7 +11,7 @@ const processResponse = (data) => {
    if (rtn_status === 200) {
     let rtn_msg = data["message"]
     
-    localStorage.setItem('user_id', data["id"])
+    localStorage.setItem('user_id', data["user_id"])
     //localStorage.setItem('user_email', user_data["email"])
     localStorage.setItem('token', data["auth_token"])
     token = data["auth_token"]
@@ -21,6 +21,10 @@ const processResponse = (data) => {
   else if (rtn_status == 400) {
     console.log('processResponse..' + JSON.stringify(data))
     let rtn_err = data["message"]
+    return data
+  }
+  else if (rtn_status => 500) {
+    //internal server error
     return data
   }
   
@@ -62,4 +66,4 @@ export const createContact = (contact_params) =>
     body: JSON.stringify(contact_params)
     })
     .then(res => res.json())
-    .then(data => (processResponse(data)))
+    .then(data => (data))

@@ -6,6 +6,12 @@ import Nav from './Nav'
 
 class Contacts extends Component {
 
+  componentDidMount(){
+    this.fetchContacts()
+  }
+
+  fetchContacts = () => {}
+
   render() {
     return (
       <div>

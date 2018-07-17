@@ -4,8 +4,10 @@ class ContactsController < ApplicationController
 
 	# POST /users/:user_id/contacts
 	def create
-		@contact = @user.contact.create!(contact_params)
-		json_response(@contact, :created)
+		@contact = Contact.create!(contact_params)
+			
+		response = { status: 200, message: 'contact created' }
+		json_response(response, :created)
   end
   
   private

@@ -4,6 +4,7 @@ import serializeForm from 'form-serialize';
 import { Container, Header, Input, Button, Popup, Modal, Icon, Loader } from 'semantic-ui-react'
 import * as api from '../utils/api'
 import ShowModal from './ShowModal'
+import Nav from './Nav'
 
 class Login extends Component {
   state = {
@@ -51,29 +52,32 @@ class Login extends Component {
 
   render() {
     return (
-      <Container text>
-      <div className="container">
-        <Header as='h2'>Sign in</Header>
-        {this.state.modalOpen === false 
-          ? <div>
-              { this.state.loading === true 
-                ? <Loader active  size="large">confirming credentials...please wait</Loader>
-                :
-                <form className="wrapper" onSubmit={this.handleSubmit}>
-                  <Input icon="envelope" className="sign-in-input" type="email" name="email" placeholder="add your email.." />
-                  <Input icon="key" className="sign-in-input" type="password" name="password" placeholder="add your password.." />
-                  <Button primary>Login</Button>
-                  <div className="form-footer">
-                    <span>Don't have an account? </span>
-                    <Link to="/register">Register</Link>
-                  </div>
-                </form>
-              }
+      <div>
+        <Nav />
+        <Container text>
+        <div className="container">
+          <Header as='h2'>Sign in</Header>
+          {this.state.modalOpen === false 
+            ? <div>
+                { this.state.loading === true 
+                  ? <Loader active  size="large">confirming credentials...please wait</Loader>
+                  :
+                  <form className="wrapper" onSubmit={this.handleSubmit}>
+                    <Input icon="envelope" className="sign-in-input" type="email" name="email" placeholder="add your email.." />
+                    <Input icon="key" className="sign-in-input" type="password" name="password" placeholder="add your password.." />
+                    <Button primary>Login</Button>
+                    <div className="form-footer">
+                      <span>Don't have an account? </span>
+                      <Link to="/register">Register</Link>
+                    </div>
+                  </form>
+                }
+          </div>
+            :   <ShowModal modalMessage={this.state.modalMessage} open={this.state.modalOpen} handleClose={this.handleClose} />
+          }
         </div>
-          :   <ShowModal modalMessage={this.state.modalMessage} open={this.state.modalOpen} handleClose={this.handleClose} />
-        }
+        </Container>
       </div>
-      </Container>
     )
   }
 }

@@ -5,6 +5,7 @@ import 'react-phone-number-input/rrui.css'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import * as api from '../utils/api'
+import Nav from './Nav'
 
 class CreateContact extends Component {
 
@@ -17,35 +18,46 @@ class CreateContact extends Component {
     e.preventDefault()
     const values = serializeForm(e.target, { hash:true })
     console.log("create contact..." + JSON.stringify(values))
-    //this.createNewContact(values)
+    this.createNewContact(values)
   }
 
   createNewContact = (contact_params) => {
     api.createContact(contact_params)
-              .then(data => (console.log(JSON.stringify(data))))
+              .then(data => (this.processResponse(data)))
+  }
+
+  processResponse = (data) => {
+    if (data !== undefined) {
+      if (data["status"] === 200) {
+        //contact created successfully
+      }
+    }
   }
 
   render() {
-    const user_id = localStorage.user_id
+    let user_id = localStorage.user_id
     return (
-      <Container text>
-        <div className="container">
-          <Header as='h3'>Create Contact</Header>
-          <form className="wrapper-contact" onSubmit={this.handleSubmit}>
-            
-            <PhoneInput
-                placeholder="Enter phone number"
-                name="phone"
-                value={ this.state.phone }
-                onChange={ phone => this.setState({ phone }) }
-                className="create-contact-input create-contact-input-phone"
-                />
-            <Input className="create-contact-input" type="number" name="age" placeholder="enter your age.." />
-            <Input className="create-contact-input" type="hidden" name="user_id" value={user_id} />
-            <Button className="sign-up-button" primary>Create Contact</Button>
-          </form>
-        </div>
-      </Container>
+      <div>
+        <Nav />
+        <Container text>
+          <div className="container">
+            <Header as='h3'>Create Contact</Header>
+            <form className="wrapper-contact" onSubmit={this.handleSubmit}>
+              
+              <PhoneInput
+                  placeholder="Enter phone number"
+                  name="phone"
+                  value={ this.state.phone }
+                  onChange={ phone => this.setState({ phone }) }
+                  className="create-contact-input create-contact-input-phone"
+                  />
+              <Input className="create-contact-input" type="number" name="age" placeholder="enter your age.." />
+              <Input className="create-contact-input" type="hidden" name="user_id" value={user_id} />
+              <Button className="sign-up-button" primary>Create Contact</Button>
+            </form>
+          </div>
+        </Container>
+      </div>
     )
   }
 }

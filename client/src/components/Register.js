@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Container, Header, Input, Button, Loader } from 'semantic-ui-react'
 import * as api from '../utils/api'
 import ShowModal from './ShowModal'
+import Nav from './Nav'
 
 class Register extends Component {
   state = {
@@ -43,33 +44,36 @@ class Register extends Component {
 
   render() {
     return (
-      <Container>
-        <div className="container">
-          <Header as='h3'>Sign Up</Header>
-          {this.state.modalOpen === false 
-            ?
-            <div>
-              {this.state.loading === true 
-              ? <Loader active  size="large">creating account...please wait</Loader>
+      <div>
+        <Nav />
+        <Container>
+          <div className="container">
+            <Header as='h3'>Sign Up</Header>
+            {this.state.modalOpen === false 
+              ?
+              <div>
+                {this.state.loading === true 
+                ? <Loader active  size="large">creating account...please wait</Loader>
+                :
+                <form className="wrapper" onSubmit={this.handleSubmit}>
+                  <Input icon="user" className="sign-up-input" type="name" name="name" placeholder="add your name.." />
+                  <Input icon="envelope" className="sign-up-input" type="email" name="email" placeholder="add your email.." />
+                  <Input icon="key" className="sign-up-input" type="password" name="password" placeholder="add your password.." />
+                  <Input icon="key" className="sign-up-input" type="password" name="password_confirmation" placeholder="confirm your password.." />
+                  <Button className="sign-up-button" primary>Create an account</Button>
+                  <div className="form-footer">
+                    <span>Already have an account? </span>
+                    <Link to="/login">Login</Link>
+                  </div>
+                </form>
+                }
+              </div>
               :
-              <form className="wrapper" onSubmit={this.handleSubmit}>
-                <Input icon="user" className="sign-up-input" type="name" name="name" placeholder="add your name.." />
-                <Input icon="envelope" className="sign-up-input" type="email" name="email" placeholder="add your email.." />
-                <Input icon="key" className="sign-up-input" type="password" name="password" placeholder="add your password.." />
-                <Input icon="key" className="sign-up-input" type="password" name="password_confirmation" placeholder="confirm your password.." />
-                <Button className="sign-up-button" primary>Create an account</Button>
-                <div className="form-footer">
-                  <span>Already have an account? </span>
-                  <Link to="/login">Login</Link>
-                </div>
-              </form>
-              }
-            </div>
-            :
-              <ShowModal modalMessage={this.state.modalMessage} open={this.state.modalOpen} handleClose={this.handleClose} />
-          }
-        </div>
-      </Container>
+                <ShowModal modalMessage={this.state.modalMessage} open={this.state.modalOpen} handleClose={this.handleClose} />
+            }
+          </div>
+        </Container>
+      </div>
     )
   }
 }
